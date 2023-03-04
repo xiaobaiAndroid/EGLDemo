@@ -40,6 +40,9 @@ public:
     typedef void (*OnChange)(int width, int height);
     OnChange mOnChange;
 
+    typedef void (*OnDestroy)();
+    OnDestroy mOnDestroy;
+
     typedef void (*OnDraw)();
     OnDraw mOnDraw;
 
@@ -57,6 +60,7 @@ public:
     void setOnCreateCallBack(OnCreate onCreate);
     void setOnChangeCallBack(OnChange onChange);
     void setOnDraw(OnDraw onDraw);
+    void setOnDestroy(OnDestroy onDestroy);
 
 };
 

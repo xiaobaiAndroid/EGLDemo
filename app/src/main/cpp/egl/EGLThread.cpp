@@ -19,6 +19,7 @@ EGLThread::~EGLThread() {
     pthread_cond_destroy(&mPthreadCondition);
 }
 
+
 void *run(void *context) {
     auto *pThread = static_cast<EGLThread *>(context);
     if(!pThread){
@@ -60,7 +61,7 @@ void *run(void *context) {
         }
 
     }
-
+    pThread->mOnDestroy();
     pHelper->destroyEGL();
     delete pHelper;
     pthread_exit(nullptr);
@@ -115,4 +116,8 @@ void EGLThread::setOnChangeCallBack(OnChange onChange) {
 
 void EGLThread::setOnDraw(OnDraw onDraw) {
     mOnDraw = onDraw;
+}
+
+void EGLThread::setOnDestroy(OnDestroy onDestroy) {
+    mOnDestroy = onDestroy;
 }

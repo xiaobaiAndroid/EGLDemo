@@ -15,6 +15,9 @@ include_directories(
         utils
         jni
         sampler
+        core
+        entity
+        include
 )
 
 file(GLOB src-files
